@@ -1,0 +1,4 @@
+# Placeholders only. Real values belong in .dev.vars locally or Worker secrets.
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+GOOGLE_REFRESH_TOKEN=""

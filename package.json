@@ -1,0 +1,26 @@
+{
+  "name": "public-availability",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "benchmark:ics": "node scripts/benchmark-ics.mjs",
+    "dev": "npm run build && wrangler dev --local --test-scheduled",
+    "test": "node --test --experimental-test-isolation=none",
+    "types": "wrangler types --env-file .dev.vars.example",
+    "check": "npm run types && tsc -p tsconfig.worker.json && tsc -p tsconfig.web.json",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "google:auth": "node scripts/google-auth.mjs",
+    "dry-run": "npm run build && wrangler deploy --dry-run --outdir .wrangler/dry-run"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "wrangler": "4.153.0"
+  }
+}
