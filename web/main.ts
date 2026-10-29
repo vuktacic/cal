@@ -345,7 +345,7 @@ function captureAndRenderWeek(captureViewport = true): void {
   weekGrid.replaceChildren();
 
   addRuntimeRule(calendarViewport, `height:${viewportSize.height.toFixed(2)}px`);
-  pixelsPerMinute = Math.max(1, calendarViewport.clientHeight - HEADER_HEIGHT - 2 * TIMELINE_EDGE_PADDING) / (12 * 60);
+  pixelsPerMinute = Math.max(1, calendarViewport.clientHeight - HEADER_HEIGHT - 2 * TIMELINE_EDGE_PADDING) / (13 * 60);
   const timelineHeight = 1440 * pixelsPerMinute + 2 * TIMELINE_EDGE_PADDING;
   const weekClass = addRuntimeRule(weekGrid, `grid-template-rows:${HEADER_HEIGHT}px ${timelineHeight.toFixed(4)}px`);
   const hourHeight = 60 * pixelsPerMinute;
