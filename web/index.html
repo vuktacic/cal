@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Availability calendar." />
+    <title>Availability</title>
+    <link id="calendar-stylesheet" rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" type="module"></script>
+  </head>
+  <body>
+    <main class="calendar-app">
+      <section class="calendar-toolbar" aria-label="Calendar controls">
+        <div class="week-navigation">
+          <button id="previous-button" type="button" aria-label="Previous week">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button id="today-button" type="button">Today</button>
+          <button id="next-button" type="button" aria-label="Next week">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+        <h1 id="week-heading" aria-live="polite" aria-atomic="true">This week</h1>
+        <div class="toolbar-options">
+          <button id="timezone-toggle" type="button" role="switch" aria-checked="true" aria-label="Use Vancouver time">Vancouver time</button>
+          <a class="calendar-subscribe" href="/busy.ics" aria-label="Add to calendar">Add to calendar</a>
+        </div>
+      </section>
+
+      <div
+        id="calendar-viewport"
+        class="calendar-scroll"
+        role="region"
+        aria-label="Availability calendar. Scroll vertically to view midnight through midnight."
+        tabindex="0"
+      >
+        <div class="week-grid" id="week-grid" aria-label="Availability by day"></div>
+      </div>
+      <p class="availability-status" id="availability-status" role="status" aria-live="polite" aria-atomic="true">
+        Checking availability…
+      </p>
+    </main>
+  </body>
+</html>
