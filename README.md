@@ -1,4 +1,4 @@
-# Public availability
+# cal
 
 A shareable calendar for `cal.vuktacic.com`. It merges busy times from every
 Google calendar you own, including hidden calendars and ones you create later.

@@ -1,9 +1,23 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
+  --page-surface: #111111;
+  --subtle-surface: #171717;
+  --outside-range: #1b1b1b;
+  --primary-text: #f2f2f2;
+  --muted-text: #a3a3a3;
+  --disabled-text: #777777;
+  --grid-line: #3f3f3f;
+  --strong-ruler: #707070;
+  --busy-surface: #2a2a2a;
+  --busy-border: #bdbdbd;
+  --link-color: #8ab4f8;
+  --current-time: #ff6b75;
+  --scrollbar-thumb: #666666;
+  --scrollbar-track: #181818;
   scroll-behavior: auto;
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  color: #000;
-  background: #fff;
+  color: var(--primary-text);
+  background: var(--page-surface);
   font-synthesis: none;
   text-rendering: auto;
   -webkit-font-smoothing: auto;
@@ -16,7 +30,7 @@
 body {
   min-width: 320px;
   margin: 0;
-  background: #fff;
+  background: var(--page-surface);
 }
 
 button {
@@ -25,7 +39,7 @@ button {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #000;
+  outline: 2px solid var(--primary-text);
   outline-offset: 1px;
   background: transparent;
   text-decoration: underline;
@@ -33,7 +47,7 @@ a:focus-visible {
 }
 
 .calendar-scroll:focus-visible {
-  outline: 2px solid #000;
+  outline: 2px solid var(--primary-text);
   outline-offset: 1px;
   background: transparent;
 }
@@ -67,7 +81,7 @@ a:focus-visible {
   justify-content: center;
   padding: 0 9px;
   border: 0;
-  color: #000;
+  color: var(--primary-text);
   background: transparent;
   font-size: 14px;
   cursor: pointer;
@@ -75,13 +89,13 @@ a:focus-visible {
 
 .week-navigation button:hover:not(:disabled) {
   background: transparent;
-  color: #000;
+  color: var(--primary-text);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .week-navigation button:disabled {
-  color: #666;
+  color: var(--disabled-text);
   cursor: default;
 }
 
@@ -92,7 +106,7 @@ a:focus-visible {
 
 #week-heading {
   margin: 0;
-  color: #000;
+  color: var(--primary-text);
   font-size: 16px;
   font-weight: 600;
   text-align: center;
@@ -105,7 +119,7 @@ a:focus-visible {
   align-items: center;
   justify-content: flex-end;
   gap: 6px 10px;
-  color: #000;
+  color: var(--primary-text);
   font-size: 12px;
 }
 
@@ -116,7 +130,7 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 0 8px;
-  color: #0000ee;
+  color: var(--link-color);
   font-size: 14px;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -124,7 +138,7 @@ a:focus-visible {
 }
 
 .toolbar-options a:hover {
-  color: #0000ee;
+  color: var(--link-color);
   text-decoration-thickness: 2px;
 }
 
@@ -138,7 +152,7 @@ a:focus-visible {
   padding-inline: 8px;
   border: 0;
   background: transparent;
-  color: #000;
+  color: var(--primary-text);
   font-size: 14px;
   justify-content: flex-start;
   text-align: left;
@@ -158,7 +172,7 @@ a:focus-visible {
 
 #timezone-toggle:hover:not(:disabled) {
   background: transparent;
-  color: #000;
+  color: var(--primary-text);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -172,7 +186,7 @@ a:focus-visible {
   height: min(680px, calc(100dvh - 220px));
   min-height: 120px;
   max-height: 680px;
-  scrollbar-color: #999 #f7f7f7;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   scrollbar-width: thin;
 }
 
@@ -190,7 +204,7 @@ a:focus-visible {
   top: 0;
   z-index: 6;
   height: 72px;
-  background: #fff;
+  background: var(--page-surface);
 }
 
 .grid-corner {
@@ -200,8 +214,8 @@ a:focus-visible {
   align-items: flex-end;
   justify-content: center;
   padding: 0 2px 8px;
-  border-right: 1px solid #999;
-  color: #555;
+  border-right: 1px solid var(--strong-ruler);
+  color: var(--muted-text);
   font-size: 12px;
 }
 
@@ -212,13 +226,17 @@ a:focus-visible {
   justify-content: center;
   gap: 3px;
   padding: 5px 8px;
-  border-left: 1px solid #ccc;
+  border-left: 1px solid var(--grid-line);
 }
 
 .day-header[data-range="past"],
-.day-header[data-range="uncovered"],
+.day-header[data-range="uncovered"] {
+  color: var(--muted-text);
+}
+
 .day-header[data-range="outside"] {
-  color: #666;
+  color: var(--muted-text);
+  background: var(--outside-range);
 }
 
 .day-date {
@@ -227,7 +245,7 @@ a:focus-visible {
   align-items: center;
   gap: 5px;
   margin: 0;
-  color: #000;
+  color: var(--primary-text);
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
@@ -235,7 +253,7 @@ a:focus-visible {
 }
 
 .day-header[data-today="true"] .day-date {
-  color: #000;
+  color: var(--primary-text);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
@@ -244,7 +262,7 @@ a:focus-visible {
 .day-offset {
   min-width: 0;
   margin: 0;
-  color: #555;
+  color: var(--muted-text);
   font-size: 12px;
   line-height: 1.25;
   overflow-wrap: anywhere;
@@ -253,7 +271,7 @@ a:focus-visible {
 .day-header[data-range="past"] .day-date,
 .day-header[data-range="uncovered"] .day-date,
 .day-header[data-range="outside"] .day-date {
-  color: #666;
+  color: var(--muted-text);
 }
 
 .time-ruler {
@@ -261,8 +279,8 @@ a:focus-visible {
   left: 0;
   z-index: 5;
   overflow: visible;
-  border-right: 1px solid #999;
-  background: #fff;
+  border-right: 1px solid var(--strong-ruler);
+  background: var(--page-surface);
 }
 
 .time-ruler-content {
@@ -275,7 +293,7 @@ a:focus-visible {
   right: 0;
   left: 0;
   height: 0;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--strong-ruler);
   pointer-events: none;
 }
 
@@ -284,8 +302,8 @@ a:focus-visible {
   top: -8px;
   left: 0;
   padding: 0 3px 0 4px;
-  color: #555;
-  background: #fff;
+  color: var(--muted-text);
+  background: var(--page-surface);
   font-size: 12px;
   line-height: 16px;
   white-space: nowrap;
@@ -303,19 +321,37 @@ a:focus-visible {
   position: relative;
   min-width: 0;
   overflow: hidden;
-  border-left: 1px solid #ccc;
-  background-color: #fff;
+  border-left: 1px solid var(--grid-line);
+  background-color: var(--page-surface);
 }
 
 .day-timeline[data-today="true"] {
-  background-color: #fafafa;
+  background-color: var(--subtle-surface);
 }
 
 .day-timeline[data-range="past"],
-.day-timeline[data-range="uncovered"],
+.day-timeline[data-range="uncovered"] {
+  color: var(--muted-text);
+}
+
 .day-timeline[data-range="outside"] {
-  color: #666;
-  background-color: #f7f7f7;
+  color: var(--muted-text);
+  background-color: var(--outside-range);
+}
+
+.hour-gridlines {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hour-gridline {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 0;
+  border-top: 1px solid var(--grid-line);
 }
 
 .busy-block {
@@ -325,10 +361,10 @@ a:focus-visible {
   left: 3px;
   overflow: hidden;
   padding: 4px 5px;
-  border: 1px solid #000;
+  border: 1px solid var(--busy-border);
   border-radius: 0;
-  color: #000;
-  background: #ddd;
+  color: var(--primary-text);
+  background: var(--busy-surface);
   font-size: 12px;
   line-height: 1.25;
   overflow-wrap: anywhere;
@@ -345,7 +381,7 @@ a:focus-visible {
 }
 
 .busy-time {
-  color: #555;
+  color: var(--muted-text);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
@@ -381,7 +417,7 @@ a:focus-visible {
   right: 0;
   left: 0;
   height: 0;
-  border-top: 1px solid #9b111e;
+  border-top: 1px solid var(--current-time);
   pointer-events: none;
 }
 
@@ -398,11 +434,11 @@ a:focus-visible {
   margin: 0;
   padding: 8px 6px;
   border: 0;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid var(--grid-line);
+  border-bottom: 1px solid var(--grid-line);
   border-radius: 0;
-  color: #555;
-  background: #fff;
+  color: var(--muted-text);
+  background: var(--page-surface);
   font-size: 12px;
   line-height: 1.4;
   text-align: center;
@@ -412,7 +448,7 @@ a:focus-visible {
 .availability-status {
   min-height: 1.4em;
   margin: 8px 0 0;
-  color: #555;
+  color: var(--muted-text);
   font-size: 12px;
   line-height: 1.4;
 }

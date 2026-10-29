@@ -348,11 +348,6 @@ function captureAndRenderWeek(captureViewport = true): void {
   pixelsPerMinute = Math.max(1, calendarViewport.clientHeight - HEADER_HEIGHT - 2 * TIMELINE_EDGE_PADDING) / (13 * 60);
   const timelineHeight = 1440 * pixelsPerMinute + 2 * TIMELINE_EDGE_PADDING;
   const weekClass = addRuntimeRule(weekGrid, `grid-template-rows:${HEADER_HEIGHT}px ${timelineHeight.toFixed(4)}px`);
-  const hourHeight = 60 * pixelsPerMinute;
-  installRuntimeRule(
-    `.${weekClass} .day-timeline`,
-    `background-image:repeating-linear-gradient(to bottom,#ededed 0px,#ededed 1px,transparent 1px,transparent ${hourHeight.toFixed(4)}px);background-position:0 ${TIMELINE_EDGE_PADDING}px`,
-  );
 
   const busyStart = visibleSnapshot
     ? Math.max(
@@ -441,6 +436,16 @@ function captureAndRenderWeek(captureViewport = true): void {
       "aria-label",
       formatDate(day.date, { weekday: "long", month: "long", day: "numeric", year: "numeric" }),
     );
+    const gridlines = document.createElement("div");
+    gridlines.className = "hour-gridlines";
+    gridlines.setAttribute("aria-hidden", "true");
+    for (let hour = 0; hour <= 24; hour += 1) {
+      const gridline = document.createElement("span");
+      gridline.className = "hour-gridline";
+      applyTimePosition(gridline, hour * 60);
+      gridlines.append(gridline);
+    }
+    timeline.append(gridlines);
 
     if (message) {
       timeline.setAttribute("aria-disabled", "true");
